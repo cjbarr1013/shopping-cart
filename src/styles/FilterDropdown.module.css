@@ -1,0 +1,35 @@
+.dropdown {
+  width: 100%;
+  border: 1px solid var(--secondaryBtnColor);
+}
+
+.dropdown > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: none;
+}
+
+.dropdown > button > img {
+  height: 1.5rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0rem 1rem 1rem 1rem;
+  animation: fade-in 0.5s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

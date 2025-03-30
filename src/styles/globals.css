@@ -1,0 +1,35 @@
+:root {
+  --color1: #ffffff;
+  --color2: #ffffff;
+  --color3: #ffffff;
+  --primaryBtnColor: rgb(33, 33, 233);
+  --secondaryBtnColor: rgb(226, 226, 226);
+  --cartBtnColor: rgb(226, 226, 226);
+  --lightFontColor: white;
+  --darkFontColor: black;
+
+  --headerFont: serif;
+  --bodyFont: sans-serif;
+
+  --cardBorderRadius: 1rem;
+  --btnBorderRadius: 30px;
+}
+
+button {
+  cursor: pointer;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}

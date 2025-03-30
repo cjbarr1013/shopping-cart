@@ -1,0 +1,31 @@
+.quantityCounter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border: 1px solid var(--secondaryBtnColor);
+  border-radius: var(--btnBorderRadius);
+}
+
+.quantityCounter button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--btnBorderRadius);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.quantityCounter button:hover {
+  background-color: var(--secondaryBtnColor);
+}
+
+.quantityCounter img {
+  height: 1.25rem;
+}
+
+.quantityCounter span {
+  padding: 0 0.5rem;
+}
