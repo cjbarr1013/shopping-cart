@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color1);
+  box-shadow: 0 0 0.5rem rgb(161, 161, 161);
+  position: sticky;
+  top: 0;
+}

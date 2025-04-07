@@ -33,3 +33,7 @@ fieldset {
   border: none;
   padding: 0;
 }
+
+#root {
+  min-height: 100vh;
+}

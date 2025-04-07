@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from '../styles/SortDropdown.module.css';
 
 function SortDropdown({ handleChange }) {
@@ -9,5 +10,9 @@ function SortDropdown({ handleChange }) {
     </select>
   );
 }
+
+SortDropdown.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default SortDropdown;

@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--secondaryBtnColor);
+  border-radius: var(--cardBorderRadius);
+  background-color: var(--color2);
+}
+
+.card > img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.interact {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.addToCartBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--secondaryBtnColor);
+  border-radius: var(--btnBorderRadius);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addToCartBtn:hover {
+  background-color: var(--secondaryBtnColor);
+}
+
+.addToCartBtn img {
+  height: 1.25rem;
+}

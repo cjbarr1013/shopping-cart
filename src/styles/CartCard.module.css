@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--secondaryBtnColor);
+  border-radius: var(--cardBorderRadius);
+  background-color: var(--color2);
+}
+
+.card > img {
+  height: 100%;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.interact {
+  display: flex;
+  justify-content: end;
+}
