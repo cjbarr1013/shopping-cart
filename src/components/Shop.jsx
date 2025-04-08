@@ -4,98 +4,86 @@ import ShopCard from './ShopCard';
 import SortDropdown from './SortDropdown';
 import defaultShopProducts from '../data/defaultShopProducts';
 import { defaultPriceFilter } from '../data/defaultFilters';
+import { createFilters } from '../utils/shopUtils';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 function Shop({ products = defaultShopProducts }) {
-  const filters = useRef(createFilters());
-  const filteredProducts = useRef(products);
-  const [selectedFilters, setSelectedFilters] = useState({});
-  const [selectedSort, setSelectedSort] = useState('alpha');
+  const filters = useRef(
+    createFilters(['category'], defaultPriceFilter, products)
+  );
+  const selectedFilters = useRef({});
+  const selectedSort = useRef('alpha');
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
-  useEffect(() => {
-    const filterKeys = Object.keys(selectedFilters);
+  function handleSortChange(value) {
+    selectedSort.current = value;
+    const sorted = sortProducts([...filteredProducts]);
+    setFilteredProducts(sorted);
+  }
 
-    if (filterKeys.length > 0) {
-      filteredProducts.current = products.filter((product) => {
-        return filterKeys.every((key) => {
-          return selectedFilters[key].includes(product[key]);
-        });
-      });
+  function handleFilterChange(e, title) {
+    const { value, checked } = e.target;
+    organizeFilter(title, value, checked);
+
+    const filterTitles = Object.keys(selectedFilters.current);
+    if (filterTitles.length > 0) {
+      setFilteredProducts(sortProducts(filterProducts(filterTitles)));
     } else {
-      filteredProducts.current = products;
+      setFilteredProducts(sortProducts(products));
     }
-  }, [selectedFilters, products]);
+  }
 
-  useEffect(() => {
-    const sorted = filteredProducts.current.sort((a, b) => {
-      if (selectedSort === 'alpha') {
+  function organizeFilter(title, value, checked) {
+    if (checked) {
+      // Check if key exists for title (is there already a filter selected under this title?)
+      if (!selectedFilters.current[title]) {
+        // If not, create a key
+        selectedFilters.current = {
+          ...selectedFilters.current,
+          [title]: [value],
+        };
+      } else {
+        // If it does, add the new value to the array of values for that key
+        selectedFilters.current = {
+          ...selectedFilters.current,
+          [title]: [...selectedFilters.current[title], value],
+        };
+      }
+    } else {
+      // If the user has unchecked it, remove the value from the array
+      selectedFilters.current = {
+        ...selectedFilters.current,
+        [title]: [...selectedFilters.current[title]].filter(
+          (option) => option !== value
+        ),
+      };
+      // If the array is empty, remove the key from the object
+      if (selectedFilters.current[title].length === 0) {
+        delete selectedFilters.current[title];
+      }
+    }
+  }
+
+  function sortProducts(products) {
+    return products.sort((a, b) => {
+      if (selectedSort.current === 'alpha') {
         return a.title.localeCompare(b.title);
-      } else if (selectedSort === 'l2h') {
+      } else if (selectedSort.current === 'l2h') {
         return a.price - b.price;
-      } else if (selectedSort === 'h2l') {
+      } else if (selectedSort.current === 'h2l') {
         return b.price - a.price;
       }
       return 0;
     });
+  }
 
-    filteredProducts.current = sorted;
-    console.log('Filtered products:', filteredProducts.current);
-  }, [selectedSort, filteredProducts]);
-
-  function handleFilterChange(e, title) {
-    const { value, checked } = e.target;
-    if (checked) {
-      if (!selectedFilters[title]) {
-        setSelectedFilters({ ...selectedFilters, [title]: [value] });
-      } else {
-        setSelectedFilters({
-          ...selectedFilters,
-          [title]: [...selectedFilters[title], value],
-        });
-      }
-    } else {
-      setSelectedFilters({
-        ...selectedFilters,
-        [title]: [...selectedFilters[title]].filter(
-          (option) => option !== value
-        ),
+  function filterProducts(titles) {
+    return products.filter((product) => {
+      return titles.every((title) => {
+        return selectedFilters.current[title].includes(product[title]);
       });
-    }
-  }
-
-  function createFilters() {
-    const filterTitles = ['category'];
-    const filters = filterTitles.map((title) => {
-      let optionTitles = getOptionTitles(title);
-      return {
-        title: title,
-        options: optionTitles.map((optionTitle) => {
-          return {
-            label: createLabel(optionTitle),
-            value: createValue(optionTitle),
-          };
-        }),
-      };
     });
-
-    return [...filters, defaultPriceFilter];
-  }
-
-  function getOptionTitles(title) {
-    const optionTitles = products.map((product) => product[title]);
-    return [...new Set(optionTitles)].sort((a, b) => a.localeCompare(b));
-  }
-
-  function createLabel(title) {
-    return title
-      .split(' ')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  }
-
-  function createValue(title) {
-    return title.split(' ').join('-').toLowerCase();
   }
 
   return (
@@ -107,11 +95,11 @@ function Shop({ products = defaultShopProducts }) {
       <div className={styles.mainContainer}>
         <div className={styles.dropdownContainer}>
           <SortDropdown
-            handleChange={(e) => setSelectedSort(e.target.value)}
+            handleChange={(e) => handleSortChange(e.target.value)}
           ></SortDropdown>
         </div>
         <div className={styles.productsContainer}>
-          {filteredProducts.current.map((product) => (
+          {filteredProducts.map((product) => (
             <ShopCard key={product.id} product={product}></ShopCard>
           ))}
         </div>

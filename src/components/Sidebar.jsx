@@ -3,8 +3,6 @@ import styles from '../styles/Sidebar.module.css';
 import FilterDropdown from './FilterDropdown';
 import { defaultFilters } from '../data/defaultFilters';
 
-import { useState } from 'react';
-
 function Sidebar({ filters = defaultFilters, handleSelect }) {
   return (
     <div className={styles.sidebar}>
