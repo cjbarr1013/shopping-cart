@@ -10,10 +10,10 @@ function StorePages({ cart = defaultCartProducts }) {
   }, 0);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.cartContainer}>
       <Header subtotal={subtotal}></Header>
-      {/* <Cart subtotal={subtotal}></Cart> */}
-      <Shop></Shop>
+      <Cart subtotal={subtotal}></Cart>
+      {/* <Shop></Shop> */}
     </div>
   );
 }

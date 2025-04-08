@@ -20,6 +20,27 @@ const defaultCartProducts = [
     quantity: 3,
     image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
   },
+  {
+    id: 4,
+    title: "Men's Jacket",
+    price: 39.99,
+    quantity: 2,
+    image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+  },
+  {
+    id: 5,
+    title: 'Old Piece of Meatloaf',
+    price: 18.99,
+    quantity: 1,
+    image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+  },
+  {
+    id: 6,
+    title: 'Blood of the Virgin Mary',
+    price: 8.99,
+    quantity: 3,
+    image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+  },
 ];
 
 export default defaultCartProducts;
