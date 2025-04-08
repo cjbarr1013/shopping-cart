@@ -14,6 +14,7 @@ function FilterOptions({
           type="checkbox"
           id={option.value}
           value={option.value}
+          checked={option.checked}
           onChange={(e) => handleSelect(e, title)}
         />
         <label htmlFor={option.value}>{option.label}</label>

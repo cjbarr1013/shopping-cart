@@ -4,7 +4,12 @@ import ShopCard from './ShopCard';
 import SortDropdown from './SortDropdown';
 import defaultShopProducts from '../data/defaultShopProducts';
 import { defaultPriceFilter } from '../data/defaultFilters';
-import { createFilters } from '../utils/shopUtils';
+import {
+  createFilters,
+  getFilterIndex,
+  getOptionIndex,
+  checkForCheckedFilters,
+} from '../utils/shopUtils';
 
 import { useState, useRef } from 'react';
 
@@ -12,7 +17,6 @@ function Shop({ products = defaultShopProducts }) {
   const filters = useRef(
     createFilters(['category'], defaultPriceFilter, products)
   );
-  const selectedFilters = useRef({});
   const selectedSort = useRef('alpha');
   const [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -24,45 +28,14 @@ function Shop({ products = defaultShopProducts }) {
 
   function handleFilterChange(e, title) {
     const { value, checked } = e.target;
-    organizeFilter(title, value, checked);
-
-    const filterTitles = Object.keys(selectedFilters.current);
-    if (filterTitles.length > 0) {
-      setFilteredProducts(sortProducts(filterProducts(filterTitles)));
-    } else {
-      setFilteredProducts(sortProducts(products));
-    }
+    toggleFilterChecked(title, value, checked);
+    setFilteredProducts(sortProducts(filterProducts()));
   }
 
-  function organizeFilter(title, value, checked) {
-    if (checked) {
-      // Check if key exists for title (is there already a filter selected under this title?)
-      if (!selectedFilters.current[title]) {
-        // If not, create a key
-        selectedFilters.current = {
-          ...selectedFilters.current,
-          [title]: [value],
-        };
-      } else {
-        // If it does, add the new value to the array of values for that key
-        selectedFilters.current = {
-          ...selectedFilters.current,
-          [title]: [...selectedFilters.current[title], value],
-        };
-      }
-    } else {
-      // If the user has unchecked it, remove the value from the array
-      selectedFilters.current = {
-        ...selectedFilters.current,
-        [title]: [...selectedFilters.current[title]].filter(
-          (option) => option !== value
-        ),
-      };
-      // If the array is empty, remove the key from the object
-      if (selectedFilters.current[title].length === 0) {
-        delete selectedFilters.current[title];
-      }
-    }
+  function toggleFilterChecked(title, value, checked) {
+    const filterIndex = getFilterIndex(title, filters.current);
+    const optionIndex = getOptionIndex(filterIndex, value, filters.current);
+    filters.current[filterIndex].options[optionIndex].checked = checked;
   }
 
   function sortProducts(products) {
@@ -78,10 +51,25 @@ function Shop({ products = defaultShopProducts }) {
     });
   }
 
-  function filterProducts(titles) {
+  function filterProducts() {
+    console.log(filters.current);
+    if (!checkForCheckedFilters(filters.current)) {
+      return products;
+    }
+
     return products.filter((product) => {
-      return titles.every((title) => {
-        return selectedFilters.current[title].includes(product[title]);
+      return filters.current.every((filter) => {
+        // If there are no options checked under this filter, return true
+        if (!checkForCheckedFilters(filters.current, filter.title)) {
+          return true;
+        }
+        // If there are, make sure atleast one option matches the product
+        for (const option of filter.options) {
+          if (option.checked && product[filter.title] === option.value) {
+            return true;
+          }
+        }
+        return false;
       });
     });
   }
