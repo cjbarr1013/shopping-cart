@@ -2,34 +2,51 @@ import styles from '../styles/Shop.module.css';
 import Sidebar from './Sidebar';
 import ShopCard from './ShopCard';
 import SortDropdown from './SortDropdown';
-import defaultShopProducts from '../data/defaultShopProducts';
-import { defaultPriceFilter } from '../data/defaultFilters';
 import {
+  addPriceRange,
   createFilters,
   getFilterIndex,
   getOptionIndex,
   checkForCheckedFilters,
 } from '../utils/shopUtils';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-function Shop({ products = defaultShopProducts }) {
-  const filters = useRef(
-    createFilters(['category'], defaultPriceFilter, products)
-  );
+function Shop() {
+  const filters = useRef([]);
   const selectedSort = useRef('alpha');
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const allProducts = useRef([]);
+  const [activeProducts, setActiveProducts] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const products = await response.json();
+        allProducts.current = addPriceRange(products);
+        filters.current = createFilters(['category'], allProducts.current);
+        setActiveProducts(allProducts.current);
+      } catch (error) {
+        setError(error);
+      }
+      setLoading(false);
+    }
+
+    fetchProducts();
+  }, []);
 
   function handleSortChange(value) {
     selectedSort.current = value;
-    const sorted = sortProducts([...filteredProducts]);
-    setFilteredProducts(sorted);
+    const sorted = sortProducts([...activeProducts]);
+    setActiveProducts(sorted);
   }
 
   function handleFilterChange(e, title) {
     const { value, checked } = e.target;
     toggleFilterChecked(title, value, checked);
-    setFilteredProducts(sortProducts(filterProducts()));
+    setActiveProducts(sortProducts(filterProducts()));
   }
 
   function toggleFilterChecked(title, value, checked) {
@@ -54,10 +71,11 @@ function Shop({ products = defaultShopProducts }) {
   function filterProducts() {
     console.log(filters.current);
     if (!checkForCheckedFilters(filters.current)) {
-      return products;
+      return allProducts.current;
     }
 
-    return products.filter((product) => {
+    return allProducts.current.filter((product) => {
+      console.log(filters.current);
       return filters.current.every((filter) => {
         // If there are no options checked under this filter, return true
         if (!checkForCheckedFilters(filters.current, filter.title)) {
@@ -74,6 +92,22 @@ function Shop({ products = defaultShopProducts }) {
     });
   }
 
+  if (loading) {
+    return (
+      <div className={styles.loading}>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.loading}>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.shopContainer}>
       <Sidebar
@@ -87,7 +121,7 @@ function Shop({ products = defaultShopProducts }) {
           ></SortDropdown>
         </div>
         <div className={styles.productsContainer}>
-          {filteredProducts.map((product) => (
+          {activeProducts.map((product) => (
             <ShopCard key={product.id} product={product}></ShopCard>
           ))}
         </div>

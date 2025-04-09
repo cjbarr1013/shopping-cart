@@ -1,7 +1,22 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  letter-spacing: 0.25rem;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: red;
+}
+
 .shopContainer {
   display: flex;
   flex: 1;
-  height: 100vh;
   overflow: hidden;
 }
 

@@ -11,7 +11,7 @@ function ShopCard({ product = defaultShopProducts[0], handleAddToCart }) {
 
   return (
     <div className={styles.card}>
-      <img src={product.imageUrl} alt=""></img>
+      <img src={product.image} alt=""></img>
       <div className={styles.textContent}>
         <div className={styles.info}>
           <h2>{product.title}</h2>

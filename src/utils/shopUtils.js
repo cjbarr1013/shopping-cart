@@ -1,4 +1,26 @@
-function createFilters(filterTitles, defaultPriceFilter, products) {
+import { defaultPriceFilter } from '../data/defaultFilters';
+
+function addPriceRange(products) {
+  const priceRanges = defaultPriceFilter.options.map((option) => {
+    return {
+      range: JSON.parse(option.value),
+      value: option.value,
+    };
+  });
+
+  return products.map((product) => {
+    const price = product.price;
+    const priceRange = priceRanges.find((range) => {
+      return price >= range.range[0] && price <= range.range[1];
+    });
+    return {
+      ...product,
+      'shop by price': priceRange ? priceRange.value : null,
+    };
+  });
+}
+
+function createFilters(filterTitles, products) {
   const filters = filterTitles.map((title) => {
     let optionTitles = getOptionTitles(title, products);
     return {
@@ -54,6 +76,7 @@ function checkForCheckedFilters(filters, title = undefined) {
 }
 
 export {
+  addPriceRange,
   createFilters,
   getFilterIndex,
   getOptionIndex,
