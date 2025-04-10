@@ -11,6 +11,7 @@ import {
 } from '../utils/shopUtils';
 
 import { useState, useRef, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 function Shop() {
   const filters = useRef([]);
@@ -19,6 +20,7 @@ function Shop() {
   const [activeProducts, setActiveProducts] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { handleCartChange } = useOutletContext();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -69,13 +71,11 @@ function Shop() {
   }
 
   function filterProducts() {
-    console.log(filters.current);
     if (!checkForCheckedFilters(filters.current)) {
       return allProducts.current;
     }
 
     return allProducts.current.filter((product) => {
-      console.log(filters.current);
       return filters.current.every((filter) => {
         // If there are no options checked under this filter, return true
         if (!checkForCheckedFilters(filters.current, filter.title)) {
@@ -122,7 +122,11 @@ function Shop() {
         </div>
         <div className={styles.productsContainer}>
           {activeProducts.map((product) => (
-            <ShopCard key={product.id} product={product}></ShopCard>
+            <ShopCard
+              key={product.id}
+              product={product}
+              handleCartChange={handleCartChange}
+            ></ShopCard>
           ))}
         </div>
       </div>

@@ -3,14 +3,22 @@ import styles from '../styles/CartCard.module.css';
 import { CartCardQuantityCounter } from './QuantityCounter';
 import defaultCartProducts from '../data/defaultCartProducts';
 
-function CartCard({
-  product = defaultCartProducts[0],
-  handleQuantityChange,
-  handleRemoveFromCart,
-}) {
+function CartCard({ product = defaultCartProducts[0], handleCartChange }) {
+  function handleQuantityChange(value) {
+    handleCartChange({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: value,
+      image: product.image,
+    });
+  }
+
   return (
     <div className={styles.card}>
-      <img src={product.image} alt=""></img>
+      <div className={styles.imageContainer}>
+        <img src={product.image} alt="product image"></img>
+      </div>
       <div className={styles.textContent}>
         <div className={styles.info}>
           <h2>{product.title}</h2>
@@ -19,10 +27,7 @@ function CartCard({
         <div className={styles.interact}>
           <CartCardQuantityCounter
             quantity={product.quantity}
-            handleQuantityChange={(value) =>
-              handleQuantityChange(value, product.id)
-            }
-            handleRemoveFromCart={() => handleRemoveFromCart(product.id)}
+            handleQuantityChange={handleQuantityChange}
           ></CartCardQuantityCounter>
         </div>
       </div>

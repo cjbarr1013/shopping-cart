@@ -27,19 +27,11 @@ function StoreCardQuantityCounter({ quantity, handleQuantityChange }) {
   );
 }
 
-function CartCardQuantityCounter({
-  quantity,
-  handleQuantityChange,
-  handleRemoveFromCart,
-}) {
+function CartCardQuantityCounter({ quantity, handleQuantityChange }) {
   const minus = quantity > 1 ? stdMinus : cartMinus;
 
   function handleMinusClick() {
-    if (quantity > 1) {
-      handleQuantityChange(quantity - 1);
-    } else {
-      handleRemoveFromCart();
-    }
+    handleQuantityChange(quantity - 1);
   }
 
   function handlePlusClick() {

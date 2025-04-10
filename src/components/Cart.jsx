@@ -2,16 +2,25 @@ import PropTypes from 'prop-types';
 import styles from '../styles/Cart.module.css';
 import CartCard from './CartCard';
 import CartSummary from './CartSummary';
-import defaultCartProducts from '../data/defaultCartProducts';
+import { useOutletContext } from 'react-router-dom';
 
-function Cart({ cart = defaultCartProducts, subtotal = 105.67 }) {
+function Cart() {
+  const { cart, handleCartChange, subtotal } = useOutletContext();
+
   return (
     <div className={styles.cartContainer}>
       <div className={styles.cart}>
         <div className={styles.cardContainer}>
-          {cart.map((product) => (
-            <CartCard key={product.id} product={product}></CartCard>
-          ))}
+          {cart.length === 0 ?
+            <p>Your cart is empty.</p>
+          : cart.map((product) => (
+              <CartCard
+                key={product.id}
+                product={product}
+                handleCartChange={handleCartChange}
+              ></CartCard>
+            ))
+          }
         </div>
         <CartSummary subtotal={subtotal}></CartSummary>
       </div>

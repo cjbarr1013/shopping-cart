@@ -6,7 +6,7 @@ import defaultShopProducts from '../data/defaultShopProducts';
 
 import { useState } from 'react';
 
-function ShopCard({ product = defaultShopProducts[0], handleAddToCart }) {
+function ShopCard({ product = defaultShopProducts[0], handleCartChange }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -24,7 +24,15 @@ function ShopCard({ product = defaultShopProducts[0], handleAddToCart }) {
           ></StoreCardQuantityCounter>
           <button
             className={styles.addToCartBtn}
-            onClick={() => handleAddToCart(product.id, quantity)}
+            onClick={() =>
+              handleCartChange({
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                quantity: quantity,
+                image: product.image,
+              })
+            }
           >
             <img src={cartPlus} alt="add to cart"></img>
           </button>
