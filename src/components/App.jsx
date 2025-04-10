@@ -42,63 +42,6 @@ function App() {
   return (
     <>
       <StorePages></StorePages>
-      {/* <Button
-        text="Click Me!"
-        handleClick={() => console.log('primary')}
-        type="primary"
-      ></Button>
-      <Button
-        text="No! Click Me!"
-        handleClick={() => console.log('secondary')}
-        type="secondary"
-      ></Button>
-      <CartButton
-        total="$29.45"
-        handleClick={() => console.log('Redirecting to cart...')}
-      ></CartButton>
-      <StoreCardQuantityCounter quantity={1}></StoreCardQuantityCounter>
-      <CartCardQuantityCounter quantity={1}></CartCardQuantityCounter>
-      <SortDropdown></SortDropdown>
-      <FilterDropdown
-        title="Categories"
-        options={[
-          { value: 'mens', label: "Men's Clothing" },
-          { value: 'womens', label: "Women's Clothing" },
-        ]}
-      ></FilterDropdown>
-      <StoreCard
-        productInfo={{ title: "Sweet Men's Jacket", price: 59.99, id: 1 }}
-      ></StoreCard>
-      <CartCard
-        productInfo={{
-          title: "Sweet Men's Jacket",
-          price: 59.99,
-          id: 1,
-          quantity: 2,
-        }}
-      ></CartCard>
-      <CartSummary subtotal={102.97}></CartSummary>
-      <Header total={107.98}></Header>
-      <Sidebar
-        options={[
-          {
-            title: 'Category',
-            subOptions: [
-              { value: 'mens', label: "Men's Clothing" },
-              { value: 'womens', label: "Women's Clothing" },
-            ],
-          },
-          {
-            title: 'Price',
-            subOptions: [
-              { value: 'under25', label: 'Under $25' },
-              { value: '25-50', label: '$25 - $50' },
-              { value: '50-100', label: '$50 - $100' },
-              { value: '100-250', label: '$100 - $250' },
-            ],
-          },
-        ]}
-      ></Sidebar> */}
     </>
   );
 }
