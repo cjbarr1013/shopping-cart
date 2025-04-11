@@ -21,7 +21,7 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 60%;
-  min-width: 400px;
+  min-width: 200px;
 }
 
 .emptyCart {
@@ -35,5 +35,20 @@
 }
 
 .emptyCart > h2 {
-  font-size: 4rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+@media (max-width: 745px) {
+  .cartContainer {
+    padding: 1rem;
+  }
+
+  .cart {
+    flex-direction: column;
+  }
+
+  .cardContainer {
+    width: 100%;
+  }
 }

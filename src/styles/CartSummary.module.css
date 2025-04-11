@@ -22,3 +22,9 @@
 .summary hr {
   border-top: 1px solid var(--secondaryBtnColor);
 }
+
+@media (max-width: 745px) {
+  .summary {
+    width: 100%;
+  }
+}

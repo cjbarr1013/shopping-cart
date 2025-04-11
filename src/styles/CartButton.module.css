@@ -13,3 +13,9 @@
 .btn > img {
   height: 1.5rem;
 }
+
+@media (max-width: 400px) {
+  .btn > span {
+    display: none;
+  }
+}

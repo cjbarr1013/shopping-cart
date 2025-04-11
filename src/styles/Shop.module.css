@@ -37,6 +37,21 @@
 
 .productsContainer {
   display: grid;
-  grid-gap: 2rem;
+  gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+@media (max-width: 680px) {
+  .shopContainer {
+    flex-direction: column;
+  }
+
+  .mainContainer {
+    padding: 1rem;
+  }
+
+  .productsContainer {
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
