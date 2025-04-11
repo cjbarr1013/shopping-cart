@@ -23,24 +23,32 @@ function StorePages() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  function handleCartChange(item) {
+  function handleCartChange(item, loc) {
     const existingItemIndex = cart.findIndex((i) => i.id === item.id);
     const newCart = [...cart];
 
     if (existingItemIndex === -1) {
+      // If item is not in cart, add it
       newCart.push(item);
     } else {
       const existingItem = newCart[existingItemIndex];
       if (item.quantity === 0) {
+        // If quantity is 0, remove item from cart
         newCart.splice(existingItemIndex, 1);
       } else {
+        // If item is already in cart, update quantity
+        // The value of quantity will depend on the location
+        const newQuantity =
+          loc === 'shop' ?
+            existingItem.quantity + item.quantity
+          : item.quantity;
+
         newCart[existingItemIndex] = {
           ...existingItem,
-          quantity: item.quantity,
+          quantity: newQuantity,
         };
       }
     }
-
     setCart(newCart);
   }
 

@@ -25,13 +25,16 @@ function ShopCard({ product = defaultShopProducts[0], handleCartChange }) {
           <button
             className={styles.addToCartBtn}
             onClick={() =>
-              handleCartChange({
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                quantity: quantity,
-                image: product.image,
-              })
+              handleCartChange(
+                {
+                  id: product.id,
+                  title: product.title,
+                  price: product.price,
+                  quantity: quantity,
+                  image: product.image,
+                },
+                'shop'
+              )
             }
           >
             <img src={cartPlus} alt="add to cart"></img>

@@ -5,13 +5,16 @@ import defaultCartProducts from '../data/defaultCartProducts';
 
 function CartCard({ product = defaultCartProducts[0], handleCartChange }) {
   function handleQuantityChange(value) {
-    handleCartChange({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: value,
-      image: product.image,
-    });
+    handleCartChange(
+      {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity: value,
+        image: product.image,
+      },
+      'cart'
+    );
   }
 
   return (
