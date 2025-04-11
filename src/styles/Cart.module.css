@@ -23,3 +23,17 @@
   width: 60%;
   min-width: 400px;
 }
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
+  width: 100%;
+}
+
+.emptyCart > h2 {
+  font-size: 4rem;
+}
