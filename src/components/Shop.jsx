@@ -29,7 +29,7 @@ function Shop() {
         const products = await response.json();
         allProducts.current = addPriceRange(products);
         filters.current = createFilters(['category'], allProducts.current);
-        setActiveProducts(allProducts.current);
+        setActiveProducts(sortProducts(allProducts.current));
       } catch (error) {
         setError(error);
       }
