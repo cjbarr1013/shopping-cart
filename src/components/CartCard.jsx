@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styles from '../styles/CartCard.module.css';
 import { CartCardQuantityCounter } from './QuantityCounter';
 import defaultCartProducts from '../data/defaultCartProducts';
+import { toUSD } from '../utils/utils';
 
 function CartCard({ product = defaultCartProducts[0], handleCartChange }) {
   function handleQuantityChange(value) {
@@ -25,7 +26,7 @@ function CartCard({ product = defaultCartProducts[0], handleCartChange }) {
       <div className={styles.textContent}>
         <div className={styles.info}>
           <h2>{product.title}</h2>
-          <p>${(product.price * product.quantity).toFixed(2)}</p>
+          <p>{toUSD.format(product.price * product.quantity)}</p>
         </div>
         <div className={styles.interact}>
           <CartCardQuantityCounter

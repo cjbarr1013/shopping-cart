@@ -3,6 +3,7 @@ import styles from '../styles/ShopCard.module.css';
 import { StoreCardQuantityCounter } from './QuantityCounter';
 import cartPlus from '../assets/icons/cart-plus.svg';
 import defaultShopProducts from '../data/defaultShopProducts';
+import { toUSD } from '../utils/utils';
 
 import { useState } from 'react';
 
@@ -15,7 +16,7 @@ function ShopCard({ product = defaultShopProducts[0], handleCartChange }) {
       <div className={styles.textContent}>
         <div className={styles.info}>
           <h2>{product.title}</h2>
-          <p>${product.price.toFixed(2)}</p>
+          <p>{toUSD.format(product.price)}</p>
         </div>
         <div className={styles.interact}>
           <StoreCardQuantityCounter

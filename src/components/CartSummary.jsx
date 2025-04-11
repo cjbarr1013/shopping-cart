@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/CartSummary.module.css';
 import Button from './Button';
+import { toUSD } from '../utils/utils';
 
 function CartSummary({ subtotal = 105.67 }) {
   const tax = subtotal * 0.065;
@@ -11,21 +12,21 @@ function CartSummary({ subtotal = 105.67 }) {
     <div className={styles.summary}>
       <div>
         <h3>Subtotal</h3>
-        <p>${subtotal.toFixed(2)}</p>
+        <p>{toUSD.format(subtotal)}</p>
       </div>
       <hr></hr>
       <div>
         <h3>Est. Tax</h3>
-        <p>${tax.toFixed(2)}</p>
+        <p>{toUSD.format(tax)}</p>
       </div>
       <div>
         <h3>Est. Shipping</h3>
-        <p>{shipping ? `$${shipping}` : 'FREE'}</p>
+        <p>{shipping ? `${toUSD.format(shipping)}` : 'FREE'}</p>
       </div>
       <hr></hr>
       <div>
         <h3>Total</h3>
-        <p>${total.toFixed(2)}</p>
+        <p>{toUSD.format(total)}</p>
       </div>
       <Button
         text="Checkout"
