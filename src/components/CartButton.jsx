@@ -2,12 +2,18 @@ import PropTypes from 'prop-types';
 import styles from '../styles/CartButton.module.css';
 import cartIcon from '../assets/icons/cart-outline.svg';
 import { toUSD } from '../utils/utils';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function CartButton({ subtotal, handleClick }) {
   const [animate, setAnimate] = useState(false);
+  const oldSubtotal = useRef(subtotal);
 
   useEffect(() => {
+    if (oldSubtotal.current == subtotal) {
+      return;
+    }
+
+    oldSubtotal.current = subtotal;
     setAnimate(true);
 
     const timeout = setTimeout(() => setAnimate(false), 1000);
