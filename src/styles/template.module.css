@@ -1,0 +1,6 @@
+.msgCard {
+  background-color: white;
+  border: var(--border);
+  border-radius: var(--cardBorderRadius);
+  padding: 1rem 2rem;
+}

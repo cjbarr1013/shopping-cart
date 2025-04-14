@@ -11,8 +11,10 @@ function Cart() {
     <>
       {cart.length === 0 ?
         <div className={styles.emptyCart}>
-          <h2>Your cart is empty.</h2>
-          <Link to="/store/shop">Go back to store</Link>
+          <div className={styles.msg}>
+            <h2>Your cart is empty.</h2>
+            <Link to="/store/shop">Go back to store</Link>
+          </div>
         </div>
       : <div className={styles.cartContainer}>
           <div className={styles.cart}>

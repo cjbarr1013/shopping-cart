@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  border: 1px solid var(--secondaryBtnColor);
+  border: 1px solid var(--borderColor);
   border-radius: var(--btnBorderRadius);
 }
 
@@ -19,7 +19,7 @@
 }
 
 .quantityCounter button:hover {
-  background-color: var(--secondaryBtnColor);
+  background-color: var(--color2);
 }
 
 .quantityCounter img {

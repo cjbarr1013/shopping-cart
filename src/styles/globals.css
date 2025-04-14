@@ -1,16 +1,42 @@
+@font-face {
+  font-family: 'Spectral-Light';
+  src:
+    url('../assets/fonts/spectral-light-webfont.woff2') format('woff2'),
+    url('../assets/fonts/spectral-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spectral-Medium';
+  src:
+    url('../assets/fonts/spectral-medium-webfont.woff2') format('woff2'),
+    url('../assets/fonts/spectral-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Spectral-Bold';
+  src:
+    url('../assets/fonts/spectral-bold-webfont.woff2') format('woff2'),
+    url('../assets/fonts/spectral-bold-webfont.woff') format('woff');
+}
+
 :root {
-  --color1: #ffffff;
-  --color2: #ffffff;
-  --color3: #ffffff;
-  --primaryBtnColor: rgb(33, 33, 233);
+  --color1: #001220;
+  --color2: #009473;
+  --primaryBtnColor: var(--color2);
   --secondaryBtnColor: rgb(226, 226, 226);
   --cartBtnColor: rgb(226, 226, 226);
   --lightFontColor: white;
-  --darkFontColor: black;
+  --darkFontColor: rgb(29, 29, 29);
+  --borderColor: var(--color1);
+  --boxShadowColor: rgb(161, 161, 161);
 
-  --headerFont: serif;
-  --bodyFont: sans-serif;
+  --headerFont: 'Spectral-Medium', serif;
+  --headerFontBold: 'Spectral-Bold', serif;
+  --bodyFont: Roboto, Helvetica, Arial, sans-serif;
 
+  --border: 2px solid var(--borderColor);
   --cardBorderRadius: 1rem;
   --btnBorderRadius: 30px;
 }
@@ -19,8 +45,14 @@ html,
 body {
   height: 100%;
 }
+
 html {
   min-width: 320px;
+  color: var(--darkFontColor);
+}
+
+h1 {
+  font-family: var(--headerFontBold);
 }
 
 button {

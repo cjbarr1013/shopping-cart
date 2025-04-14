@@ -122,7 +122,7 @@ function Shop() {
         </div>
         {activeProducts.length === 0 ?
           <div className={styles.emptyProducts}>
-            <h2>No products found.</h2>
+            <h2 className={styles.msg}>No products found.</h2>
           </div>
         : <div className={styles.productsContainer}>
             {activeProducts.map((product) => (
@@ -134,15 +134,6 @@ function Shop() {
             ))}
           </div>
         }
-        <div className={styles.productsContainer}>
-          {activeProducts.map((product) => (
-            <ShopCard
-              key={product.id}
-              product={product}
-              handleCartChange={handleCartChange}
-            ></ShopCard>
-          ))}
-        </div>
       </div>
     </div>
   );

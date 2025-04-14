@@ -1,6 +1,6 @@
 .dropdown {
   width: 100%;
-  border-bottom: 1px solid var(--secondaryBtnColor);
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .dropdown > button {
@@ -11,6 +11,7 @@
   padding: 1rem;
   border: none;
   background: none;
+  font-weight: 500;
 }
 
 .dropdown > button > img {

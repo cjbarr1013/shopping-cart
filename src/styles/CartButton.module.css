@@ -5,13 +5,57 @@
   gap: 0.25rem;
   padding: 0.5rem 1rem;
   color: var(--darkFontColor);
-  background-color: transparent;
-  border: 1px solid var(--secondaryBtnColor);
+  background-color: white;
+  border: none;
   border-radius: var(--btnBorderRadius);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--color2);
+  color: var(--lightFontColor);
 }
 
 .btn > img {
   height: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover > img {
+  filter: brightness(0) invert(1);
+}
+
+.animate {
+  animation: change 1s ease-in-out;
+}
+
+.animateImg {
+  animation: changeImg 1s ease-in-out;
+}
+
+@keyframes change {
+  0%,
+  100% {
+    color: var(--darkFontColor);
+    background-color: white;
+  }
+  25%,
+  75% {
+    background-color: var(--color2);
+    color: var(--lightFontColor);
+  }
+}
+
+@keyframes changeImg {
+  0%,
+  100% {
+    filter: brightness(0) invert(0);
+  }
+  25%,
+  75% {
+    filter: brightness(0) invert(1);
+  }
 }
 
 @media (max-width: 400px) {

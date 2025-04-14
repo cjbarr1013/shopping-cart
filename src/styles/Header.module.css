@@ -4,7 +4,7 @@
   align-items: center;
   padding: 1rem;
   background-color: var(--color1);
-  box-shadow: 0 0 0.5rem rgb(161, 161, 161);
+  box-shadow: 0 0 0.5rem var(--color1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -16,4 +16,8 @@
 
 .header > a:visited {
   color: inherit;
+}
+
+.header h1 {
+  color: var(--lightFontColor);
 }

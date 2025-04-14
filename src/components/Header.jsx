@@ -9,7 +9,7 @@ function Header({ subtotal }) {
   return (
     <header className={styles.header}>
       <Link to="/">
-        <h1>The Store</h1>
+        <h1>THE STORE</h1>
       </Link>
       <CartButton
         subtotal={subtotal}

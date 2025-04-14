@@ -26,10 +26,10 @@ function CartSummary({ subtotal }) {
       <hr></hr>
       <div>
         <h3>Total</h3>
-        <p>{toUSD.format(total)}</p>
+        <p className={styles.total}>{toUSD.format(total)}</p>
       </div>
       <Button
-        text="Checkout"
+        text="Proceed to Checkout"
         handleClick={() => console.log('Not functional')}
         type="primary"
       ></Button>

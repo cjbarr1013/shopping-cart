@@ -3,20 +3,34 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 1rem;
+  padding: 2rem;
+  background: url('../assets/backgrounds/layered-waves-haikei.svg');
+  background-size: cover; /* Ensures the SVG covers the container */
+  background-position: center; /* Centers the SVG */
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .content > h1 {
-  font-size: 10rem;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   line-height: 0.9;
+  color: var(--lightFontColor);
+}
+
+.content > h1 > span:first-child {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.content > h1 > span:last-child {
+  font-size: 10rem;
 }
 
 .content > button {
@@ -24,9 +38,15 @@
   width: 30%;
 }
 
-@media (max-width: 425px) {
-  .content > h1 {
-    font-size: 7rem;
+@media (max-width: 625px) {
+  .content > h1 > span:first-child {
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+
+  .content > h1 > span:last-child {
+    font-size: 5rem;
+    color: var(--secondary-color);
   }
 
   .content > button {

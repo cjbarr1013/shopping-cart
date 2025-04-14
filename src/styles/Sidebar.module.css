@@ -3,8 +3,9 @@
   flex-direction: column;
   justify-content: flex-start;
   min-width: 250px;
-  background-color: var(--color2);
-  box-shadow: 0 0 0.5rem rgb(161, 161, 161);
+  background-color: white;
+  border-right: 1px solid var(--borderColor);
+  box-shadow: 0 0 0.5rem var(--borderColor);
   overflow: auto;
   z-index: 1;
 }
@@ -12,5 +13,6 @@
 @media (max-width: 680px) {
   .sidebar {
     width: 100%;
+    border-right: none;
   }
 }

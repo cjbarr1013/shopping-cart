@@ -8,9 +8,12 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1>The Store</h1>
+        <h1>
+          <span>Welcome to</span>
+          <span>THE STORE</span>
+        </h1>
         <Button
-          text="Shop Now"
+          text="SHOP NOW"
           handleClick={() => navigate('/store/shop')}
           type="primary"
         ></Button>
