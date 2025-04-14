@@ -120,6 +120,20 @@ function Shop() {
             handleChange={(e) => handleSortChange(e.target.value)}
           ></SortDropdown>
         </div>
+        {activeProducts.length === 0 ?
+          <div className={styles.emptyProducts}>
+            <h2>No products found.</h2>
+          </div>
+        : <div className={styles.productsContainer}>
+            {activeProducts.map((product) => (
+              <ShopCard
+                key={product.id}
+                product={product}
+                handleCartChange={handleCartChange}
+              ></ShopCard>
+            ))}
+          </div>
+        }
         <div className={styles.productsContainer}>
           {activeProducts.map((product) => (
             <ShopCard
