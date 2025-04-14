@@ -3,7 +3,6 @@
 }
 
 .cartContainer {
-  composes: background;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -30,7 +29,6 @@
 }
 
 .emptyCart {
-  composes: background;
   display: flex;
   justify-content: center;
   align-items: center;

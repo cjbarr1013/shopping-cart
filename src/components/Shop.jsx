@@ -95,7 +95,7 @@ function Shop() {
   if (loading) {
     return (
       <div className={styles.loading}>
-        <p>Loading...</p>
+        <p className={styles.msgCard}>Loading...</p>
       </div>
     );
   }
@@ -103,7 +103,7 @@ function Shop() {
   if (error) {
     return (
       <div className={styles.loading}>
-        <p>Error: {error.message}</p>
+        <p className={styles.msgCard}>Error: {error.message}</p>
       </div>
     );
   }
