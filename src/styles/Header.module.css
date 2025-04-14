@@ -7,6 +7,7 @@
   box-shadow: 0 0 0.5rem rgb(161, 161, 161);
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .header > a {

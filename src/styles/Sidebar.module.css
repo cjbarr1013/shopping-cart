@@ -6,6 +6,7 @@
   background-color: var(--color2);
   box-shadow: 0 0 0.5rem rgb(161, 161, 161);
   overflow: auto;
+  z-index: 1;
 }
 
 @media (max-width: 680px) {
