@@ -69,4 +69,21 @@ function QuantityCounter({
   );
 }
 
+StoreCardQuantityCounter.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  handleQuantityChange: PropTypes.func.isRequired,
+};
+
+CartCardQuantityCounter.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  handleQuantityChange: PropTypes.func.isRequired,
+};
+
+QuantityCounter.propTypes = {
+  minus: PropTypes.object.isRequired,
+  quantity: PropTypes.number.isRequired,
+  handleMinusClick: PropTypes.func.isRequired,
+  handlePlusClick: PropTypes.func.isRequired,
+};
+
 export { StoreCardQuantityCounter, CartCardQuantityCounter };

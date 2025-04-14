@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import styles from '../styles/ShopCard.module.css';
 import { StoreCardQuantityCounter } from './QuantityCounter';
 import cartPlus from '../assets/icons/cart-plus.svg';
-import defaultShopProducts from '../data/defaultShopProducts';
 import { toUSD } from '../utils/utils';
 
 import { useState } from 'react';
 
-function ShopCard({ product = defaultShopProducts[0], handleCartChange }) {
+function ShopCard({ product, handleCartChange }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -51,7 +50,7 @@ ShopCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
   handleAddToCart: PropTypes.func.isRequired,
 };

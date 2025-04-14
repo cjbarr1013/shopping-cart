@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styles from '../styles/Cart.module.css';
 import CartCard from './CartCard';
 import CartSummary from './CartSummary';
@@ -33,17 +32,5 @@ function Cart() {
     </>
   );
 }
-
-Cart.propTypes = {
-  cart: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      quantity: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-  subtotal: PropTypes.number.isRequired,
-};
 
 export default Cart;

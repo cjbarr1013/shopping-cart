@@ -3,7 +3,7 @@ import styles from '../styles/CartSummary.module.css';
 import Button from './Button';
 import { toUSD } from '../utils/utils';
 
-function CartSummary({ subtotal = 105.67 }) {
+function CartSummary({ subtotal }) {
   const tax = subtotal * 0.065;
   const shipping = subtotal >= 100 ? 0 : 7.99;
   const total = subtotal + tax + shipping;

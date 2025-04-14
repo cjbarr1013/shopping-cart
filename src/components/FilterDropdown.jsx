@@ -3,15 +3,10 @@ import styles from '../styles/FilterDropdown.module.css';
 import menuUp from '../assets/icons/chevron-up.svg';
 import menuDown from '../assets/icons/chevron-down.svg';
 import FilterOptions from './FilterOptions';
-import { defaultFilters } from '../data/defaultFilters';
 
 import { useState } from 'react';
 
-function FilterDropdown({
-  title = defaultFilters[0].title,
-  options = defaultFilters[0].options,
-  handleSelect,
-}) {
+function FilterDropdown({ title, options, handleSelect }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function capitalizeTitle(title) {
@@ -44,8 +39,9 @@ FilterDropdown.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      checked: PropTypes.bool.isRequired,
     })
   ).isRequired,
   handleSelect: PropTypes.func.isRequired,

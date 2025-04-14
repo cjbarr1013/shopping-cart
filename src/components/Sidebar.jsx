@@ -21,18 +21,19 @@ function Sidebar({ filters = defaultFilters, handleSelect }) {
 }
 
 Sidebar.propTypes = {
-  handleSelect: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(
+  filters: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      subOptions: PropTypes.arrayOf(
+      options: PropTypes.arrayOf(
         PropTypes.shape({
-          label: PropTypes.string.isRequired,
-          value: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          checked: PropTypes.bool.isRequired,
         })
       ).isRequired,
     })
   ).isRequired,
+  handleSelect: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

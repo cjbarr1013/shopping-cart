@@ -3,7 +3,7 @@ import styles from '../styles/CartButton.module.css';
 import cartIcon from '../assets/icons/cart-outline.svg';
 import { toUSD } from '../utils/utils';
 
-function CartButton({ subtotal = 105.67, handleClick }) {
+function CartButton({ subtotal, handleClick }) {
   return (
     <button className={styles.btn} onClick={handleClick}>
       <img src={cartIcon} alt="cart outline"></img>

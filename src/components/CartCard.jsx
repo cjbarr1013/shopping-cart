@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/CartCard.module.css';
 import { CartCardQuantityCounter } from './QuantityCounter';
-import defaultCartProducts from '../data/defaultCartProducts';
 import { toUSD } from '../utils/utils';
 
-function CartCard({ product = defaultCartProducts[0], handleCartChange }) {
+function CartCard({ product, handleCartChange }) {
   function handleQuantityChange(value) {
     handleCartChange(
       {
@@ -47,8 +46,7 @@ CartCard.propTypes = {
     quantity: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
-  handleQuantityChange: PropTypes.func.isRequired,
-  handleRemoveFromCart: PropTypes.func.isRequired,
+  handleCartChange: PropTypes.func.isRequired,
 };
 
 export default CartCard;

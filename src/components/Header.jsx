@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../styles/Header.module.css';
 import CartButton from './CartButton';
 
-function Header({ subtotal = 105.67 }) {
+function Header({ subtotal }) {
   const navigate = useNavigate();
 
   return (
@@ -21,7 +21,6 @@ function Header({ subtotal = 105.67 }) {
 
 Header.propTypes = {
   subtotal: PropTypes.number.isRequired,
-  handleClick: PropTypes.func.isRequired,
 };
 
 export default Header;

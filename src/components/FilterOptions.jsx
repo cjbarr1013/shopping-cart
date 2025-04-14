@@ -1,12 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/FilterOptions.module.css';
-import { defaultFilters } from '../data/defaultFilters';
 
-function FilterOptions({
-  title = defaultFilters[0].title,
-  options = defaultFilters[0].options,
-  handleSelect,
-}) {
+function FilterOptions({ title, options, handleSelect }) {
   return options.map((option) => {
     return (
       <div key={option.value} className={styles.option}>
@@ -24,10 +19,12 @@ function FilterOptions({
 }
 
 FilterOptions.propTypes = {
+  title: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
+      checked: PropTypes.bool.isRequired,
     })
   ).isRequired,
   handleSelect: PropTypes.func.isRequired,
