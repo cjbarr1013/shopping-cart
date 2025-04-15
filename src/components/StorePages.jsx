@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from '../styles/StorePages.module.css';
 import Header from './Header';
+import Footer from './Footer';
 
 function StorePages() {
   const [cart, setCart] = useState(() => {
@@ -56,6 +57,7 @@ function StorePages() {
     <div className={containerClass}>
       <Header subtotal={subtotal}></Header>
       <Outlet context={{ cart, handleCartChange, subtotal }} />
+      <Footer></Footer>
     </div>
   );
 }

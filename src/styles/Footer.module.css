@@ -1,0 +1,36 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: var(--lightFontColor);
+  background-color: var(--color1);
+  box-shadow: 0 0 0.5rem var(--color1);
+  z-index: 999;
+}
+
+footer a {
+  display: flex;
+  gap: 0.2rem;
+  font-weight: bold;
+  color: var(--lightFontColor);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+footer a:hover {
+  transform: scale(1.05);
+}
+
+footer a:hover img {
+  transform: rotate(360deg);
+}
+
+footer img {
+  height: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+  filter: invert(100%) sepia(0%) saturate(7479%) hue-rotate(70deg)
+    brightness(99%) contrast(107%);
+}

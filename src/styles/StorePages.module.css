@@ -15,3 +15,10 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+@media (max-width: 680px) {
+  .shopContainer {
+    min-height: 100%;
+    height: auto;
+  }
+}
