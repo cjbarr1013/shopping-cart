@@ -11,7 +11,7 @@ function ShopCard({ product, handleCartChange }) {
 
   return (
     <div className={styles.card}>
-      <img src={product.image} alt=""></img>
+      <img fetchPriority="high" src={product.image} alt=""></img>
       <div className={styles.textContent}>
         <div className={styles.info}>
           <h2>{product.title}</h2>
