@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button Component > matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="_primary_4048ec"
+  >
+    Click me!
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Cart Component > matches snapshot when cart has items 1`] = `
+<DocumentFragment>
+  <div
+    class="_cartContainer_c7a017"
+  >
+    <div
+      class="_cart_c7a017"
+    >
+      <div
+        class="_cardContainer_c7a017"
+      >
+        <div>
+          Mock CartCard: Product 1
+        </div>
+        <div>
+          Mock CartCard: Product 2
+        </div>
+      </div>
+      <div>
+        Mock CartSummary: Subtotal is $50
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Cart Component > matches snapshot when cart is empty 1`] = `
+<DocumentFragment>
+  <div
+    class="_emptyCart_c7a017"
+  >
+    <div
+      class="_msg_c7a017"
+    >
+      <h2>
+        Your cart is empty.
+      </h2>
+      <a
+        data-discover="true"
+        href="/store/shop"
+      >
+        Go back to store
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;
