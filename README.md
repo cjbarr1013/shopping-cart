@@ -1,16 +1,5 @@
-# react-template
+# Shopping Cart
 
-React template repository for new projects that can be adjusted as needed.
+Basic shopping app built with React. Utilizes React Router and the React Testing Library.
 
-After cloning to your machine:
-
-1. Install all packages by running the following command:
-```
-npm install
-```
-2. May have to run the following command to reinstall and configure eslint:
-```
-npm init @eslint/config@latest
-```
-3. Copy and paste eslint.config.js content from this directory into the new one
-
+Made as part of [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart).
